@@ -1,9 +1,6 @@
 package com.example.webframework.user;
 
-import com.example.webframework.user.dto.LoginReqDto;
-import com.example.webframework.user.dto.LoginResDto;
-import com.example.webframework.user.dto.SignUpReqDto;
-import com.example.webframework.user.dto.SignUpResDto;
+import com.example.webframework.user.dto.*;
 import com.nimbusds.jwt.JWTClaimsSet;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,6 +27,15 @@ public class UserAccountService {
     private final UserAccountRepository userAccountRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtEncoder jwtEncoder;
+
+    // 내정보조회
+    @Transactional(readOnly = true)
+    public MeResponse me(Long accountId) {
+        UserAccountEntity userAccount = userAccountRepository.findByIdAndDeleted(accountId, false)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "사용할 수 없는 계정입니다."));
+
+        return new MeResponse(userAccount.getId(), userAccount.getEmail(), userAccount.getNickname());
+    }
 
     // login
     public LoginResDto login(LoginReqDto request) {

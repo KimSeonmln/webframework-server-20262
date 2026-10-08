@@ -1,0 +1,4 @@
+GET http://localhost:8080/user-account/me
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3ZWJmcmFtZXdvcmstc2VydmVyIiwibmlja25hbWUiOiJhYmQiLCJzdWIiOiI5IiwiZXhwIjoxNzkxNDMwNjEyLCJpYXQiOjE3OTE0Mjk3MTJ9.1e2NcLQNKE0qZ1zKwIM8zks7PBAb_4DSXz7CELtr0Rg
+Content-Type: application/json
+
