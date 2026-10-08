@@ -1,0 +1,7 @@
+POST http://localhost:8080/user-account/login
+Content-Type: application/json
+
+{
+  "email": "202609181@email.daelim.ac.kr",
+  "password": "12345678"
+}
